@@ -2,6 +2,7 @@ package com.mycscode.sms.login.controller;
 
 import java.util.Optional;
 
+import com.mycscode.sms.login.model.Errors;
 import com.mycscode.sms.login.model.loginData;
 import com.mycscode.sms.login.model.loginUser;
 import com.mycscode.sms.login.service.loginService;
@@ -24,6 +25,8 @@ public class login {
     
     private loginData loginData;
 
+    private Errors errors;
+
     @PostMapping("/api/login")
     public ResponseEntity<?> getUser(
         // @RequestParam("email") String email,
@@ -42,11 +45,19 @@ public class login {
                 // return ResponseEntity.ok("Login Successful");
             }
             else{
-                return ResponseEntity.ok("Incorrect Credentials");
+                errors = new Errors();
+                errors.setType("Unauthorized");
+                errors.setMessage("Incorrect Credentials");
+                return ResponseEntity.status(HttpStatus.ACCEPTED).body(errors);
+                // return ResponseEntity.ok("Incorrect Credentials");
             }
         }
         catch(Exception e){}
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Incorrect Credentials");
+        // return ResponseEntity.status(HttpStatus.ACCEPTED).body("Incorrect Credentials");
+        errors = new Errors();
+        errors.setType("Unauthorized");
+        errors.setMessage("Incorrect Credentials");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(errors);
     }
 
     // To register data
