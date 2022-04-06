@@ -1,11 +1,11 @@
 package com.mycscode.sms.login.model;
 
-public class Errors {
+public class ResponseMessage {
     private String type;
     private String message;
-    public Errors() {
+    public ResponseMessage() {
     }
-    public Errors(String type, String message) {
+    public ResponseMessage(String type, String message) {
         this.type = type;
         this.message = message;
     }
@@ -23,8 +23,6 @@ public class Errors {
     }
     @Override
     public String toString() {
-        return "Error [message=" + message + ", type=" + type + "]";
-    }
-
-    
+        return "ResponseMessage [message=" + message + ", type=" + type + "]";
+    }    
 }
