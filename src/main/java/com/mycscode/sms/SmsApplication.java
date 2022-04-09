@@ -8,7 +8,7 @@ public class SmsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SmsApplication.class, args);
-		System.out.println("School Management System Application Started....");
+		System.out.println("School Management System Application Started on port 5000");
 	}
 
 }
